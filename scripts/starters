@@ -1,0 +1,38 @@
+gcloud config set project PROJECT_ID
+
+gcloud auth application-default login
+
+//Creating SA for Terrafom
+gcloud iam service-accounts create sa-commerce-tf-terra --display-name="Terraform service account"
+
+//Giving Editor role to SA
+gcloud projects add-iam-policy-binding bqekt-commerce \
+--member='serviceAccount:sa-commerce-tf-terra@bqekt-commerce.iam.gserviceaccount.com' \
+--role='roles/editor'
+
+//impersionnate SA
+gcloud iam service-accounts get-iam-policy sa-commerce-tf-terra@bqekt-commerce.iam.gserviceaccount.com \
+--format=json > policy.json
+
+{
+“bindings”: [
+        {
+            “members”: [“adm.bqekt@gmail.com”],
+            “role”: “roles/iam.serviceAccountTokenCreator”
+        }
+    ],
+}
+
+//update the policy with modification
+gcloud iam service-accounts set-iam-policy sa-commerce-tf-terra@bqekt-commerce.iam.gserviceaccount.com policy.json
+
+//Create bucket for storing state
+gsutil mb gs://demo-sbx-tf-state
+gsutil versioning set on gs://demo-sbx-tf-state
+
+
+
+
+
+
+
