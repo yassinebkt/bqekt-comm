@@ -1,0 +1,3 @@
+bucket = "bqekt-commere-tf-state"
+prefix = "static.tfstate.d"
+impersonate_service_account = "sa-commerce-tf-terra@bqekt-commerce.iam.gserviceaccount.com"

@@ -1,16 +1,6 @@
-terraform {
-  required_providers {
-    google = {
-      source = "hashicorp/google"
-      version = "4.51.0"
-    }
-  }
-}
-
 provider "google" {
-  credentials = file("<NAME>.json")
-
-  project = "bqekt-commerce"
-  region  = "us-central1"
-  zone    = "us-central1-c"
+  project = var.project_id
+  region  = var.region
+  zone    = var.zone
+  impersonate_service_account = var.tf_service_account
 }

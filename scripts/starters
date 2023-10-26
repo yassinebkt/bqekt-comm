@@ -31,6 +31,11 @@ gsutil mb gs://demo-sbx-tf-state
 gsutil versioning set on gs://demo-sbx-tf-state
 
 
+//
+terraform init -backend-config=gcp-commerce.backend
+
+
+
 
 
 
