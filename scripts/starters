@@ -33,6 +33,8 @@ gsutil versioning set on gs://demo-sbx-tf-state
 
 // init backend
 terraform init -backend-config=gcp-commerce.backend
+terraform workspace gcp-commerce-dev
+terraform plan -out tf.tfplan --var-file=gcp-commerce.tfvars
 
 // changing accounts
 gcloud config configurations list
