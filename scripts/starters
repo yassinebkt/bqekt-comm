@@ -31,11 +31,12 @@ gsutil mb gs://demo-sbx-tf-state
 gsutil versioning set on gs://demo-sbx-tf-state
 
 
-//
+// init backend
 terraform init -backend-config=gcp-commerce.backend
 
-
-
+// changing accounts
+gcloud config configurations list
+gcloud config configurations activate commerce
 
 
 
